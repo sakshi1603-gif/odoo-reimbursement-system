@@ -1,20 +1,39 @@
-const express = require("express");
+import express from "express";
+import {
+  createUser,
+  getUsers,
+  updateUser,
+  deleteUser,
+  setApprovalRule,
+  getApprovalRule,
+  getAllExpenses,
+  overrideExpense,
+  getCompany,
+  updateCompany,
+} from "../controllers/admin.controller.js";
+import { verifyToken, isAdmin } from "../middleware/auth.middleware.js";
+
 const router = express.Router();
 
-const adminController = require("../controllers/admin.controller");
-const { isAdmin } = require("../middleware/auth.middleware");
+// All admin routes require a valid token and admin role
+router.use(verifyToken, isAdmin);
 
-// USER MANAGEMENT
-router.post("/users", isAdmin, adminController.createUser);
-router.get("/users", isAdmin, adminController.getUsers);
-router.patch("/users/:id", isAdmin, adminController.updateUser);
+// Company
+router.get("/company", getCompany);
+router.patch("/company", updateCompany);
 
-// APPROVAL RULE
-router.post("/approval-rule", isAdmin, adminController.setApprovalRule);
-router.get("/approval-rule/:companyId", isAdmin, adminController.getApprovalRule);
+// User management
+router.post("/users", createUser);
+router.get("/users", getUsers);
+router.patch("/users/:id", updateUser);
+router.delete("/users/:id", deleteUser);
 
-// EXPENSES
-router.get("/expenses", isAdmin, adminController.getAllExpenses);
-router.patch("/expenses/:id/override", isAdmin, adminController.overrideExpense);
+// Approval rules
+router.post("/approval-rule", setApprovalRule);
+router.get("/approval-rule", getApprovalRule);
 
-module.exports = router;
+// Expense oversight
+router.get("/expenses", getAllExpenses);
+router.patch("/expenses/:id/override", overrideExpense);
+
+export default router;
