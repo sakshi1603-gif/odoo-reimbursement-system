@@ -45,7 +45,7 @@ export const login = async (req, res) => {
 
     const user = await User.findOne({ email }).populate("companyId");
 
-    if (user && (await user.matchPassword(password))) {
+    if (user && (await user.comparePassword(password))) {
       res.json({
         token: generateToken(user._id),
         user,

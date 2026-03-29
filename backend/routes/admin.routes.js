@@ -11,12 +11,11 @@ import {
   getCompany,
   updateCompany,
 } from "../controllers/admin.controller.js";
-import { verifyToken, isAdmin } from "../middleware/auth.middleware.js";
+
+import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
-
-// All admin routes require a valid token and admin role
-router.use(verifyToken, isAdmin);
+router.use(protect, adminOnly);
 
 // Company
 router.get("/company", getCompany);
