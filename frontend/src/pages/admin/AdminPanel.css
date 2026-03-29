@@ -1,0 +1,40 @@
+.admin-container {
+  padding: 20px;
+  font-family: Arial;
+  background: #f5f7fa;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+
+.table-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

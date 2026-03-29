@@ -1,0 +1,27 @@
+.rules-container {
+  padding: 20px;
+  background: #f5f7fa;
+  font-family: Arial;
+}
+
+.rule-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.rule-form input,
+.rule-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
