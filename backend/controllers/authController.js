@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import Company from "../models/Company.js";
+import User from "../models/user.model.js";
+import Company from "../models/company.model.js";
 import generateToken from "../utils/generateToken.js";
 
 // SIGNUP
