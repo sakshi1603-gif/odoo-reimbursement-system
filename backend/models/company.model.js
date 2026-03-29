@@ -1,8 +1,16 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const companySchema = new mongoose.Schema({
-  name: String,
-  baseCurrency: String
-});
+const companySchema = new mongoose.Schema(
+  {
+    name: String,
+    country: String,
+    currency: String,
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("Company", companySchema);
+export default mongoose.model("Company", companySchema);
